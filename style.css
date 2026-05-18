@@ -1,3 +1,7 @@
+/* =========================
+   RESET
+========================= */
+
 *{
   margin: 0;
   padding: 0;
@@ -8,9 +12,16 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   background: black;
   color: white;
+
+  cursor: none;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* HERO SECTION */
+/* =========================
+   HERO SECTION
+========================= */
 
 .hero{
   position: relative;
@@ -24,7 +35,49 @@ body{
   align-items: center;
 }
 
-/* NAVBAR */
+/* =========================
+   HERO VIDEO
+========================= */
+
+.hero-video{
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: -2;
+
+  transform: scale(1.03);
+}
+
+/* =========================
+   OVERLAY CINEMATOGRÁFICO
+========================= */
+
+.overlay{
+  position: absolute;
+
+  inset: 0;
+
+  background:
+  linear-gradient(
+    to right,
+    rgba(0,0,0,0.38),
+    rgba(0,0,0,0.12),
+    rgba(0,0,0,0.03)
+  );
+
+  z-index: -1;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 
 .navbar{
   position: absolute;
@@ -38,96 +91,152 @@ body{
   justify-content: space-between;
   align-items: center;
 
-  padding: 25px 60px;
+  padding: 28px 60px;
 
-  background: rgba(0,0,0,0.2);
-
-  backdrop-filter: blur(10px);
+  background:
+  linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0)
+  );
 
   z-index: 1000;
 }
+
 .logo{
   font-size: 2rem;
-  font-weight: bold;
+
+  font-weight: 600;
+
   letter-spacing: 3px;
+
+  color: rgba(255,255,255,0.95);
 }
 
 .nav-links{
   display: flex;
+
   gap: 30px;
 
   list-style: none;
 }
 
 .nav-links a{
-  color: white;
+  color: rgba(255,255,255,0.88);
+
   text-decoration: none;
 
-  transition: 0.3s;
+  font-size: 0.95rem;
+
+  transition: 0.3s ease;
 }
 
 .nav-links a:hover{
   opacity: 0.6;
 }
 
-/* HERO CONTENT */
+/* =========================
+   HERO CONTENT
+========================= */
 
 .hero-content{
   position: absolute;
 
-  left: 6%;
-  top: 50%;
+  left: 7%;
+  bottom: 10%;
 
-  transform: translateY(-50%);
-
-  max-width: 600px;
+  max-width: 380px;
 
   z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 1rem;
 }
+
+/* =========================
+   HERO TITLE
+========================= */
 
 .hero-content h2{
-  font-size: 4rem;
-  margin-bottom: 20px;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+
+  font-weight: 400;
+
+  line-height: 0.92;
+
+  letter-spacing: -2px;
+
+  color: rgba(255,255,255,0.94);
+
+  margin: 0;
 }
+
+/* =========================
+   HERO DESCRIPTION
+========================= */
 
 .hero-content p{
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-size: 0.96rem;
 
-  margin-bottom: 30px;
+  line-height: 1.7;
 
-  color: #d1d1d1;
+  color: rgba(255,255,255,0.72);
+
+  max-width: 32ch;
+
+  margin: 0;
 }
 
+/* =========================
+   HERO BUTTON
+========================= */
+
 .hero-content button{
-  width: 220px;
+  width: fit-content;
 
-  padding: 15px;
+  padding: 13px 22px;
 
-  border: none;
+  border: 1px solid rgba(255,255,255,0.22);
 
-  background: white;
-  color: black;
+  background: rgba(255,255,255,0.05);
 
-  font-size: 1rem;
-  font-weight: bold;
+  backdrop-filter: blur(6px);
+
+  color: white;
+
+  font-size: 0.9rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
 
   cursor: pointer;
 
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .hero-content button:hover{
-  transform: scale(1.05);
+  background: rgba(255,255,255,0.12);
+
+  transform: translateY(-2px);
 }
+
+/* =========================
+   FADE IN
+========================= */
+
 .fade-in{
-  animation: fadeIn 2s ease;
+  animation: fadeIn 1.8s ease;
 }
 
 @keyframes fadeIn{
+
   from{
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(25px);
   }
 
   to{
@@ -135,34 +244,54 @@ body{
     transform: translateY(0);
   }
 }
-/* GALLERY */
+
+/* =========================
+   GALLERY
+========================= */
 
 .gallery{
-  padding: 100px 80px;
+  padding: 110px 80px;
 
-  background: #0d0d0d;
+  background: #0b0b0b;
 }
 
 .gallery h2{
-  font-size: 3rem;
+  font-size: 2.8rem;
+
+  font-weight: 600;
 
   margin-bottom: 50px;
+
+  letter-spacing: -1px;
 }
 
 .gallery-grid{
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  grid-template-columns:
+  repeat(auto-fit, minmax(300px,1fr));
 
   gap: 25px;
 }
 
+/* =========================
+   PHOTO CARD
+========================= */
+
 .photo{
+  position: relative;
+
   overflow: hidden;
 
-  border-radius: 20px;
+  border-radius: 22px;
 
   cursor: pointer;
+
+  transition: transform 0.45s ease;
+}
+
+.photo:hover{
+  transform: translateY(-8px);
 }
 
 .photo img{
@@ -171,24 +300,16 @@ body{
 
   object-fit: cover;
 
-  transition: 0.5s;
+  transition: 0.6s ease;
 }
 
 .photo:hover img{
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
-.photo{
-  transition: transform 0.4s ease;
-}
-
-.photo:hover{
-  transform: translateY(-10px);
-}
-
-.photo{
-  position: relative;
-}
+/* =========================
+   PHOTO INFO
+========================= */
 
 .photo-info{
   position: absolute;
@@ -199,137 +320,48 @@ body{
 
   padding: 25px;
 
-  background: linear-gradient(
+  background:
+  linear-gradient(
     transparent,
-    rgba(0,0,0,0.9)
+    rgba(0,0,0,0.92)
   );
 
   opacity: 0;
 
-  transition: 0.5s;
-}
-
-.photo-info h3{
-  font-size: 1.5rem;
-
-  margin-bottom: 10px;
-}
-
-.photo-info p{
-  color: #d1d1d1;
+  transition: 0.5s ease;
 }
 
 .photo:hover .photo-info{
   opacity: 1;
 }
 
-/* RESPONSIVE */
+.photo-info h3{
+  font-size: 1.4rem;
 
-@media(max-width: 768px){
-
-  .navbar{
-    padding: 20px;
-  }
-
-  .nav-links{
-    gap: 15px;
-
-    font-size: 0.9rem;
-  }
-
-  .hero-content{
-    padding: 30px;
-  }
-
-  .hero-content h2{
-    font-size: 2.5rem;
-  }
-
-  .hero-content p{
-    font-size: 1rem;
-  }
-
-  .gallery{
-    padding: 60px 30px;
-  }
-
-  .gallery h2{
-    font-size: 2rem;
-  }
-
+  margin-bottom: 10px;
 }
 
-/* MENU HAMBURGUESA */
+.photo-info p{
+  color: #d1d1d1;
 
-.menu-toggle{
-  display: none;
-
-  font-size: 2rem;
-
-  cursor: pointer;
+  line-height: 1.5;
 }
 
-/* MOBILE */
-
-@media(max-width: 768px){
-
-  .menu-toggle{
-    display: block;
-  }
-
-  .nav-links{
-    position: absolute;
-
-    top: 80px;
-    right: 0;
-
-    background: rgba(0,0,0,0.95);
-
-    width: 100%;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    padding: 30px 0;
-
-    gap: 20px;
-
-    display: none;
-  }
-
-  .nav-links.active{
-    display: flex;
-  }
-
-}
-/* SCROLL ANIMATION */
-
-.hidden{
-  opacity: 0;
-
-  transform: translateY(50px);
-
-  transition: all 1s;
-}
-
-.show{
-  opacity: 1;
-
-  transform: translateY(0);
-}
-/* ARTIST SECTION */
+/* =========================
+   ARTIST SECTION
+========================= */
 
 .artist{
   display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  grid-template-columns:
+  repeat(auto-fit, minmax(300px,1fr));
 
   align-items: center;
 
-  gap: 50px;
+  gap: 60px;
 
-  padding: 100px 80px;
+  padding: 120px 80px;
 
   background: black;
 }
@@ -337,11 +369,11 @@ body{
 .artist-image img{
   width: 100%;
 
-  border-radius: 20px;
-
   height: 600px;
 
   object-fit: cover;
+
+  border-radius: 24px;
 }
 
 .artist-content span{
@@ -349,17 +381,21 @@ body{
 
   letter-spacing: 3px;
 
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .artist-content h2{
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
 
   margin: 20px 0;
+
+  line-height: 1;
+
+  letter-spacing: -2px;
 }
 
 .artist-content p{
-  color: #d1d1d1;
+  color: rgba(255,255,255,0.72);
 
   line-height: 1.8;
 
@@ -369,31 +405,37 @@ body{
 }
 
 .artist-content button{
-  padding: 15px 30px;
+  padding: 14px 28px;
 
-  border: none;
+  border: 1px solid rgba(255,255,255,0.2);
 
-  background: white;
+  background: rgba(255,255,255,0.05);
 
-  color: black;
+  color: white;
 
-  font-weight: bold;
+  font-weight: 500;
 
   cursor: pointer;
 
-  transition: 0.3s;
+  backdrop-filter: blur(8px);
+
+  transition: 0.3s ease;
 }
 
 .artist-content button:hover{
-  transform: scale(1.05);
+  background: rgba(255,255,255,0.12);
+
+  transform: translateY(-2px);
 }
-/* LIGHTBOX */
+
+/* =========================
+   LIGHTBOX
+========================= */
 
 .lightbox{
   position: fixed;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -410,6 +452,7 @@ body{
 
 .lightbox img{
   width: 80%;
+
   max-width: 1000px;
 
   border-radius: 20px;
@@ -427,13 +470,15 @@ body{
 
   cursor: pointer;
 }
-/* LOADER */
+
+/* =========================
+   LOADER
+========================= */
 
 .loader{
   position: fixed;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -453,13 +498,13 @@ body{
   font-size: 4rem;
 
   letter-spacing: 10px;
+
+  font-weight: 600;
 }
 
-/* CUSTOM CURSOR */
-
-body{
-  cursor: none;
-}
+/* =========================
+   CUSTOM CURSOR
+========================= */
 
 .cursor{
   width: 20px;
@@ -479,29 +524,141 @@ body{
 
   z-index: 9999;
 }
-/* HERO VIDEO */
 
-.hero-video{
-  position: absolute;
+/* =========================
+   SCROLL ANIMATION
+========================= */
 
-  top: 0;
-  left: 0;
+.hidden{
+  opacity: 0;
 
-  width: 100%;
-  height: 100%;
+  transform: translateY(50px);
 
-  object-fit: cover;
-
-  z-index: -2;
+  transition: all 1s ease;
 }
 
-.overlay{
-  position: absolute;
+.show{
+  opacity: 1;
 
-  width: 100%;
-  height: 100%;
+  transform: translateY(0);
+}
 
-  background: rgba(0,0,0,0.55);
+/* =========================
+   MENU HAMBURGUESA
+========================= */
 
-  z-index: -1;
+.menu-toggle{
+  display: none;
+
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px){
+
+  .navbar{
+    padding: 22px;
+  }
+
+  .logo{
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle{
+    display: block;
+  }
+
+  .nav-links{
+    position: absolute;
+
+    top: 80px;
+    right: 0;
+
+    width: 100%;
+
+    background: rgba(0,0,0,0.95);
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 30px 0;
+
+    gap: 20px;
+
+    display: none;
+  }
+
+  .nav-links.active{
+    display: flex;
+  }
+
+ .hero-content{
+  left: 9%;
+  bottom: 9%;
+
+  max-width: 320px;
+
+  gap: 1.4rem;
+}
+
+  .hero-content h2{
+    font-size: 2.3rem;
+
+    line-height: 1;
+  }
+.hero-content h2{
+  font-size: 2.3rem;
+
+  font-weight: 300;
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+
+  color: rgba(255,255,255,0.94);
+}
+
+.hero-content p{
+  font-size: 0.92rem;
+
+  max-width: 26ch;
+
+  line-height: 1.7;
+
+  color: rgba(255,255,255,0.68);
+}
+  .hero-content p{
+  font-size: 0.92rem;
+
+  max-width: 26ch;
+
+  color: rgba(255,255,255,0.68);
+  }
+
+  .gallery{
+    padding: 70px 30px;
+  }
+
+  .gallery h2{
+    font-size: 2rem;
+  }
+
+  .artist{
+    padding: 80px 30px;
+  }
+
+  .artist-content h2{
+    font-size: 2.5rem;
+  }
+
+  .artist-image img{
+    height: 450px;
+  }
+
 }
