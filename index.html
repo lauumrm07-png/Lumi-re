@@ -3,40 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumière</title>
+  <title>Lumina-art</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<header class="hero">
 
-  <header class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="assets/video.mp4" type="video/mp4">
+  </video>
 
-    <nav class="navbar">
-      <h1 class="logo">lumina-art</h1>
+  <div class="overlay"></div>
 
-      <ul class="nav-links">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Galería</a></li>
-        <li><a href="#">Artistas</a></li>
-        <li><a href="#">Historias</a></li>
-      </ul>
-    </nav>
+  <nav class="navbar">
 
-    <div class="hero-content">
-      <h2>Las imágenes también cuentan historias.</h2>
+    <h1 class="logo">Lumina-art</h1>
 
-      <p>
-        Una plataforma donde fotógrafos y artistas visuales
-        comparten emociones a través de sus obras.
-      </p>
-
-      <button>Explorar Galería</button>
+    <div class="menu-toggle">
+      ☰
     </div>
 
-  </header>
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Galería</a></li>
+      <li><a href="#">Artistas</a></li>
+      <li><a href="#">Historias</a></li>
+    </ul>
 
-  <script src="script.js"></script>
+  </nav>
+
+  <div class="hero-content fade-in">
+
+    <h2>Las imágenes también cuentan historias.</h2>
+
+    <p>
+      Una plataforma donde fotógrafos y artistas visuales
+      comparten emociones a través de sus obras.
+    </p>
+
+    <button>Explorar Galería</button>
+
+  </div>
+
+</header>
+
+  <section class="gallery hidden">
+
+  <h2>Galería Destacada</h2>
+
+  <div class="gallery-grid">
+
+    <div class="photo">
+
+  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1974&auto=format&fit=crop">
+
+  <div class="photo-info">
+    <h3>Ecos del silencio</h3>
+    <p>Una historia capturada entre sombras y luz.</p>
+  </div>
+
+</div>
+
+   <div class="photo">
+
+  <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=2070&auto=format&fit=crop">
+
+  <div class="photo-info">
+    <h3>Nostalgia urbana</h3>
+    <p>Calles vacías donde aún viven recuerdos.</p>
+  </div>
+
+</div>
+
+  <div class="photo">
+
+  <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1938&auto=format&fit=crop">
+
+  <div class="photo-info">
+    <h3>Horizonte infinito</h3>
+    <p>El instante donde el cielo parecía eterno.</p>
+  </div>
+
+</div>
+
+<div class="photo">
+
+  <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?q=80&w=2070&auto=format&fit=crop">
+
+  <div class="photo-info">
+    <h3>Fragmentos de lluvia</h3>
+    <p>Pequeños momentos congelados en el tiempo.</p>
+  </div>
+
+</div>
+
+  </div>
+
+</section>
+<section class="artist hidden">
+
+  <div class="artist-image">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop">
+  </div>
+
+  <div class="artist-content">
+
+    <span>ARTISTA DESTACADO</span>
+
+    <h2>Daniel Morris</h2>
+
+    <p>
+      Fotógrafo documental apasionado por capturar
+      emociones humanas a través de paisajes urbanos
+      y escenas cotidianas.
+    </p>
+
+    <button>Ver Perfil</button>
+
+  </div>
+
+</section>
+
+<div class="lightbox">
+
+  <span class="close">&times;</span>
+
+  <img class="lightbox-img" src="">
+
+</div>
+
+<div class="cursor"></div>
+
+<script src="script.js"></script>
+
+</body>
+
+<div class="loader">
+
+  <h1>LUMINA</h1>
+
+</div>
 
 </body>
 </html>
