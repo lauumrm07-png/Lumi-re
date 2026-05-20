@@ -1,0 +1,12 @@
+[
+  {
+    "src": "tu-imagen1.jpg",
+    "titulo": "Título de la Foto 1",
+    "descripcion": "Esta es la descripción de tu primer proyecto."
+  },
+  {
+    "src": "tu-imagen2.jpg",
+    "titulo": "Título de la Foto 2",
+    "descripcion": "Esta es la descripción de tu segundo proyecto."
+  }
+]
