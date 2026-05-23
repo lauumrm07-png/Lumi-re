@@ -2195,9 +2195,41 @@ body{
   color: white;
 
 }
+/* =========================
+   AJUSTES FINALES Y RESPONSIVE
+========================= */
 
-@media (max-width: 600px) {
-    .gallery-grid {
-        grid-template-columns: 1fr; /* Una sola columna en móviles */
-    }
+/* Zoom suave en galería (lo que me pediste antes) */
+.photo {
+    overflow: hidden; 
+    border-radius: 22px; 
+    cursor: pointer;
+    transition: 0.4s ease;
 }
+
+.photo:hover img {
+    transform: scale(1.06); 
+}
+
+/* Consolidación de Media Queries (Todo lo móvil aquí) */
+@media (max-width: 768px) {
+  /* Galería */
+  .gallery-grid {
+    padding: 0 15px;
+    gap: 15px;
+    grid-template-columns: 1fr;
+  }
+
+  /* Botones móviles */
+  .hero-content button, 
+  .photo-info button {
+    padding: 16px 32px;
+    width: 100%;
+  }
+
+  /* Ajustes de espaciado general */
+  .gallery, .artist, .profile-section, .mentorships {
+    padding: 60px 20px;
+  }
+}
+
