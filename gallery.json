@@ -1,11 +1,11 @@
 [
   {
-    "src": "assets/images/foto1.jpg",
+    "src": "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2070&auto=format&fit=crop",
     "titulo": "Ecos del silencio",
     "desc": "Una historia capturada entre sombras y luz."
   },
   {
-    "src": "assets/images/foto2.jpg",
+    "src": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop",
     "titulo": "Nostalgia urbana",
     "desc": "Calles vacías donde aún viven recuerdos."
   }

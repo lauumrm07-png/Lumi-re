@@ -1,108 +1,102 @@
-// MENU MOBILE
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+// =========================================================
+// SCRIPT PRINCIPAL - LUMINA
+// =========================================================
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarMenu();
+    inicializarObserver();
+    inicializarHeroEfectos();
+    cargarGaleria(); // 1. Primero cargamos la galería
 });
 
-// SCROLL ANIMATION
-const hiddenElements = document.querySelectorAll('.hidden');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
+// 1. MENU MOBILE
+function inicializarMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    }
+}
+
+// 2. MOTOR DE GALERÍA (Corregido a gallery.json)
+async function cargarGaleria() {
+    const container = document.getElementById('gallery-container');
+    if (!container) return;
+
+    try {
+        const response = await fetch('gallery.json');
+        const data = await response.json();
+        
+        container.innerHTML = data.map(item => `
+            <div class="photo hidden">
+                <img src="${item.src}" alt="${item.titulo}" loading="lazy">
+                <div class="photo-info">
+                    <h3>${item.titulo}</h3>
+                    <p>${item.desc}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // Reiniciamos animaciones
+        inicializarObserver();
+        // ACTIVAR LIGHTBOX DINÁMICO
+        activarLightbox(); 
+    } catch (error) {
+        console.warn('Error cargando la galería:', error);
+    }
+}
+
+// 3. LIGHTBOX DINÁMICO (La solución para elementos dinámicos)
+function activarLightbox() {
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = document.querySelector('.close');
+
+    // Usamos delegación: detectamos el clic en el contenedor padre
+    const galleryContainer = document.getElementById('gallery-container');
+    galleryContainer.addEventListener('click', (e) => {
+        if (e.target.tagName === 'IMG') {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = e.target.src;
         }
     });
-});
-hiddenElements.forEach((el) => observer.observe(el));
 
-// LIGHTBOX
-const photos = document.querySelectorAll('.photo img');
-const lightbox = document.querySelector('.lightbox');
-const lightboxImg = document.querySelector('.lightbox-img');
-const closeBtn = document.querySelector('.close');
-
-photos.forEach((photo) => {
-    photo.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = photo.src;
+    closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
     });
-});
+}
 
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
+// 4. SCROLL ANIMATION
+function inicializarObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    }, { threshold: 0.1 });
 
-// LOADER
+    document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+}
+
+// 5. LOADER
 window.addEventListener('load', () => {
     const loader = document.querySelector('.loader');
-    setTimeout(() => {
-        loader.style.opacity = '0';
+    if (loader) {
         setTimeout(() => {
-            loader.style.display = 'none';
-        }, 1000);
-    }, 2000);
-});
-
-// PARALLAX HERO
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-    if(window.scrollY < window.innerHeight){
-        let scrollPosition = window.scrollY;
-        hero.style.transform = `translateY(${scrollPosition * 0.15}px)`;
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 1000);
+        }, 2000);
     }
 });
 
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if(window.scrollY > 50){
-        navbar.classList.add('scrolled');
-    }else{
-        navbar.classList.remove('scrolled');
-    }
-});
-
-const galleryImages = document.querySelectorAll('.photo img');
-window.addEventListener('scroll', () => {
-    let scroll = window.scrollY;
-    galleryImages.forEach((img, index) => {
-        img.style.transform = `translateY(${scroll * 0.02}px) scale(1.05)`;
+// 6. HERO Y PARALLAX (Simplificado)
+function inicializarHeroEfectos() {
+    const hero = document.querySelector('.hero');
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        if (hero && window.scrollY < window.innerHeight) {
+            hero.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+        }
+        if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
-});
-
-const magneticButton = document.querySelector('.hero-content button');
-magneticButton.addEventListener('mousemove', (e) => {
-    const rect = magneticButton.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    magneticButton.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-});
-
-magneticButton.addEventListener('mouseleave', () => {
-    magneticButton.style.transform = 'translate(0,0)';
-});
-
-// Motor de Galería Dinámica
-const galleryContainer = document.getElementById('gallery-container');
-
-// Solo intentamos cargar si estamos en una página que tiene la galería
-if (galleryContainer) {
-    fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(item => {
-                const photoDiv = document.createElement('div');
-                photoDiv.className = 'photo';
-                photoDiv.innerHTML = `
-                    <img src="${item.src}" alt="${item.titulo}">
-                    <div class="photo-info">
-                        <h3>${item.titulo}</h3>
-                        <p>${item.descripcion}</p>
-                    </div>
-                `;
-                galleryContainer.appendChild(photoDiv);
-            });
-        })
-        .catch(error => console.warn('No se pudo cargar la galería dinámica:', error));
 }
