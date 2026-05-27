@@ -1,0 +1,50 @@
+[
+  {
+    "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+    "name": "Alex Rivera",
+    "category": "Fotografía",
+    "description": "Experto en fotografía de naturaleza y paisajes. Enseño técnicas de composición avanzada.",
+    "price": "$50/hora",
+    "skills": ["Composición", "Edición", "Naturaleza"]
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+    "name": "Maria Santos",
+    "category": "Fotografía Artística",
+    "description": "Especialista en fotografía conceptual y arte visual. Mentorías personalizadas.",
+    "price": "$60/hora",
+    "skills": ["Conceptual", "Iluminación", "Post-Producción"]
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1974&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+    "name": "Carlos López",
+    "category": "Retrato",
+    "description": "Maestría en fotografía de retrato. Enseño dirección de modelos y lighting studio.",
+    "price": "$55/hora",
+    "skills": ["Retrato", "Iluminación", "Dirección"]
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1502685087983-b023b574be8d?q=80&w=1974&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+    "name": "Emma Thompson",
+    "category": "Diseño Visual",
+    "description": "Directora de arte. Mentorías en diseño, composición y dirección creativa.",
+    "price": "$70/hora",
+    "skills": ["Dirección de Arte", "Diseño", "Curación"]
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+    "name": "David Kim",
+    "category": "Fotografía Digital",
+    "description": "Especialista en post-producción. Enseño Lightroom, Capture One y Photoshop.",
+    "price": "$45/hora",
+    "skills": ["Post-Producción", "Edición", "Workflow Digital"]
+  },
+  {
+    "src": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop&crop=entropy&cs=tinysrgb",
+    "name": "Sofia Gómez",
+    "category": "Narrativa Visual",
+    "description": "Fotógrafa de documentales. Mentorías en storytelling visual y fotojournalismo.",
+    "price": "$65/hora",
+    "skills": ["Storytelling", "Documental", "Narrativa"]
+  }
+]
