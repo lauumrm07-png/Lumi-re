@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil — Lumina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: rgba(255,255,255,0.85);
+      min-height: 100vh;
+    }
+
+    .profile-header {
+      padding: 140px 60px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+    }
+
+    .profile-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .profile-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .profile-role {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 16px;
+    }
+
+    .profile-bio {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .profile-specialties {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .profile-specialties span {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .profile-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 20px;
+    }
+
+    .profile-stat {
+      text-align: center;
+    }
+
+    .profile-stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .profile-stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 2px;
+    }
+
+    .profile-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .profile-social a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+
+    .profile-social a:hover {
+      color: white;
+    }
+
+    .profile-section {
+      padding: 0 60px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .profile-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .profile-empty {
+      text-align: center;
+      color: rgba(255,255,255,0.2);
+      padding: 60px 0;
+      font-size: 0.9rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .profile-grid .photo {
+      cursor: pointer;
+    }
+
+    .profile-mentorships {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .profile-reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .review-card {
+      display: flex;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 14px;
+    }
+
+    .review-student-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+
+    .review-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .review-stars {
+      color: #f5c842;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .review-student-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 6px;
+    }
+
+    .review-mentorship-title {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 8px;
+    }
+
+    .review-comment {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .back-link {
+      position: fixed;
+      top: 100px;
+      left: 24px;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.85rem;
+      z-index: 10;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover {
+      color: white;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 200px 0;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 120px 24px 40px;
+      }
+      .profile-bio { max-width: 100%; }
+      .profile-stats { justify-content: center; }
+      .profile-social { justify-content: center; }
+      .profile-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .profile-mentorships { grid-template-columns: 1fr; }
+      .profile-section { padding: 0 24px 40px; }
+      .back-link { top: 90px; left: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="back-link">← Volver</a>
+
+  <div id="profile-loading" class="loading">Cargando perfil...</div>
+
+  <div id="profile-content" style="display:none">
+
+    <div class="profile-header">
+      <img id="p-avatar" class="profile-avatar" src="" alt="">
+      <div class="profile-info">
+        <div class="profile-name" id="p-name"></div>
+        <div class="profile-role" id="p-role"></div>
+        <div class="profile-bio" id="p-bio"></div>
+        <div class="profile-specialties" id="p-specialties"></div>
+        <div class="profile-stats" id="p-stats"></div>
+        <div class="profile-social" id="p-social"></div>
+      </div>
+    </div>
+
+    <div class="profile-section" id="section-artworks">
+      <h2>Obras</h2>
+      <div class="profile-grid" id="p-artworks"></div>
+    </div>
+
+    <div class="profile-section" id="section-mentorships">
+      <h2>Mentorías</h2>
+      <div class="profile-mentorships" id="p-mentorships"></div>
+    </div>
+
+    <div class="profile-section" id="section-reviews">
+      <h2>Reseñas</h2>
+      <div class="profile-reviews" id="p-reviews"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const API = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+      ? 'http://localhost:5001/api'
+      : '/api';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const userId = params.get('id');
+      if (!userId) {
+        document.getElementById('profile-loading').textContent = 'ID de usuario no especificado.';
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API}/users/${userId}/profile`);
+        if (!res.ok) throw new Error('Not found');
+        const data = await res.json();
+        renderProfile(data);
+      } catch {
+        document.getElementById('profile-loading').textContent = 'Usuario no encontrado.';
+      }
+    });
+
+    function starString(n) {
+      return '★'.repeat(n) + '☆'.repeat(5 - n);
+    }
+
+    function renderProfile(data) {
+      const u = data.user;
+      document.getElementById('profile-loading').style.display = 'none';
+      document.getElementById('profile-content').style.display = 'block';
+
+      document.title = `${u.name} — Lumina`;
+
+      const avatar = document.getElementById('p-avatar');
+      avatar.src = u.avatar || '';
+      avatar.onerror = () => { avatar.src = ''; avatar.style.display = 'none'; };
+      if (!u.avatar) avatar.style.display = 'none';
+
+      document.getElementById('p-name').textContent = u.name;
+
+      const roleMap = { artist: 'Artista', student: 'Estudiante', admin: 'Administrador' };
+      document.getElementById('p-role').textContent = roleMap[u.role] || u.role;
+
+      document.getElementById('p-bio').textContent = u.bio || '';
+
+      const specsEl = document.getElementById('p-specialties');
+      if (u.specialties?.length) {
+        specsEl.innerHTML = u.specialties.map(s => `<span>${s}</span>`).join('');
+      } else {
+        specsEl.style.display = 'none';
+      }
+
+      const statsEl = document.getElementById('p-stats');
+      if (u.stats) {
+        statsEl.innerHTML = `
+          <div class="profile-stat"><div class="profile-stat-value">${u.stats.artworks || 0}</div><div class="profile-stat-label">Obras</div></div>
+          <div class="profile-stat"><div class="profile-stat-value">${u.stats.mentorships || 0}</div><div class="profile-stat-label">Mentorías</div></div>
+          <div class="profile-stat"><div class="profile-stat-value">${u.stats.students || 0}</div><div class="profile-stat-label">Estudiantes</div></div>
+        `;
+      }
+
+      const socialEl = document.getElementById('p-social');
+      const links = u.socialLinks || {};
+      const socialHtml = [];
+      if (links.instagram) socialHtml.push(`<a href="https://instagram.com/${links.instagram}" target="_blank">Instagram</a>`);
+      if (links.twitter) socialHtml.push(`<a href="https://twitter.com/${links.twitter}" target="_blank">Twitter</a>`);
+      if (links.website) socialHtml.push(`<a href="${links.website}" target="_blank">Web</a>`);
+      socialEl.innerHTML = socialHtml.join('');
+      if (!socialHtml.length) socialEl.style.display = 'none';
+
+      // Artworks
+      const artworksEl = document.getElementById('p-artworks');
+      if (data.artworks?.length) {
+        artworksEl.innerHTML = data.artworks.map(a => `
+          <div class="photo" style="cursor:default">
+            <div class="photo-inner">
+              <div class="photo-img-wrapper" style="background-image:url(${a.image})"></div>
+              <div class="photo-overlay">
+                <span class="photo-tag">${a.category}</span>
+                <h3>${a.title}</h3>
+                <p>${a.description || ''}</p>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('section-artworks').style.display = 'none';
+      }
+
+      // Mentorships
+      const mentsEl = document.getElementById('p-mentorships');
+      if (data.mentorships?.length) {
+        mentsEl.innerHTML = data.mentorships.map(m => `
+          <div class="mentorship-card">
+            <div class="mentorship-card-img">
+              <img src="${m.image}" alt="${m.title}" loading="lazy">
+              <div class="mentorship-card-overlay"></div>
+              <span class="mentorship-card-tag">${m.category}</span>
+            </div>
+            <div class="mentorship-info">
+              <h3>${m.title}</h3>
+              <p>${m.description}</p>
+              <div class="mentorship-price-row">
+                <span class="mentorship-price-label">Desde</span>
+                <span class="mentorship-price-value">$${m.price}</span>
+              </div>
+              <div class="skills">
+                ${(m.skills || []).map(s => `<span>${s}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('section-mentorships').style.display = 'none';
+      }
+
+      // Reviews
+      const revEl = document.getElementById('p-reviews');
+      if (data.reviews?.length) {
+        revEl.innerHTML = data.reviews.map(r => `
+          <div class="review-card">
+            <img class="review-student-avatar" src="${r.studentAvatar || ''}" alt="" onerror="this.style.display='none'">
+            <div class="review-body">
+              <div class="review-stars">${starString(r.rating)}</div>
+              <div class="review-student-name">${r.studentName || 'Estudiante'}</div>
+              <div class="review-mentorship-title">${r.mentorshipTitle || ''}</div>
+              ${r.comment ? `<div class="review-comment">${r.comment}</div>` : ''}
+            </div>
+          </div>
+        `).join('');
+      } else {
+        document.getElementById('section-reviews').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

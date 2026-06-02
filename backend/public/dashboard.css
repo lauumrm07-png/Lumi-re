@@ -1,0 +1,376 @@
+.dash {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 40px 120px;
+  min-height: 100vh;
+}
+
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.dash-header-left h1 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0 0 6px;
+}
+
+.dash-header-left p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* STATS */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.dash-stat-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: background .25s;
+}
+
+.dash-stat-card:hover {
+  background: rgba(255,255,255,0.07);
+}
+
+.dash-stat-number {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.dash-stat-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* TABS */
+.dash-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dash-tab {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  padding: 14px 28px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all .25s;
+}
+
+.dash-tab:hover {
+  color: #fff;
+}
+
+.dash-tab.active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* PANELS */
+.dash-panel {
+  display: none;
+}
+
+.dash-panel.active {
+  display: block;
+}
+
+.dash-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.dash-panel-header h2 {
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin: 0;
+  color: rgba(255,255,255,0.7);
+}
+
+/* GRID */
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.dash-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: rgba(255,255,255,0.35);
+  padding: 60px 0;
+}
+
+/* CARD */
+.dash-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color .25s;
+}
+
+.dash-card:hover {
+  border-color: rgba(255,255,255,0.2);
+}
+
+.dash-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.dash-card-body {
+  padding: 16px 18px 18px;
+}
+
+.dash-card-title {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-card-meta {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+  margin: 0 0 12px;
+}
+
+.dash-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.dash-card-actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all .2s;
+}
+
+.dash-card-actions .btn-edit:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.dash-card-actions .btn-delete:hover {
+  border-color: #ff4040;
+  color: #ff4040;
+}
+
+/* BUTTONS */
+.dash-btn-primary {
+  background: rgba(220, 200, 180, 0.95);
+  color: #0a0a0a;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: opacity .25s;
+}
+
+.dash-btn-primary:hover {
+  opacity: 0.8;
+}
+
+.dash-btn-secondary {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all .25s;
+}
+
+.dash-btn-secondary:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* FORM */
+.dash-form {
+  max-width: 700px;
+}
+
+.dash-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dash-form .form-group {
+  margin-bottom: 18px;
+}
+
+.dash-form label {
+  display: block;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+
+.dash-form input,
+.dash-form textarea,
+.dash-form select {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color .25s;
+  box-sizing: border-box;
+}
+
+.dash-form input:focus,
+.dash-form textarea:focus,
+.dash-form select:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.3);
+}
+
+.dash-form input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dash-form textarea {
+  resize: vertical;
+}
+
+.dash-form input[type="file"] {
+  padding: 10px;
+}
+
+.form-error {
+  color: #ff4040;
+  font-size: 0.85rem;
+  margin: 8px 0 0;
+}
+
+.form-success {
+  color: #4ade80;
+  font-size: 0.85rem;
+  margin: 8px 0 0;
+}
+
+/* MODAL (extends style.css modal) */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  background: #111;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%;
+  max-width: 540px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 2;
+  animation: modalIn .25s ease-out;
+}
+
+.modal-content h3 {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 0 0 24px;
+  letter-spacing: 1px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.4);
+  transition: color .25s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .dash { padding: 80px 20px 100px; }
+  .dash-stats { grid-template-columns: repeat(2, 1fr); }
+  .dash-header { flex-direction: column; gap: 16px; }
+  .dash-form-row { grid-template-columns: 1fr; }
+}
