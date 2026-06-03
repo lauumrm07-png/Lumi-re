@@ -20,6 +20,7 @@ const API = (() => {
     patch: (url, body) => fetch(`${base}${url}`, { method: 'PATCH', headers: headers(), body: JSON.stringify(body) }).then(handle),
     delete: (url) => fetch(`${base}${url}`, { method: 'DELETE', headers: headers() }).then(handle),
     upload: (url, formData) => fetch(`${base}${url}`, { method: 'PATCH', headers: { Authorization: headers()['Authorization'] }, body: formData }).then(handle),
+    _base: base,
   };
 })();
 
@@ -202,10 +203,7 @@ document.getElementById('dash-perfil-form').addEventListener('submit', async (e)
 
   try {
     const token = getToken();
-    const apiBase = location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-      ? 'http://localhost:5001/api'
-      : '/api';
-    const res = await fetch(`${apiBase}/users/me`, {
+    const res = await fetch(`${API._base}/users/me`, {
       method: 'PATCH',
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
@@ -249,7 +247,7 @@ document.getElementById('form-obra').addEventListener('submit', async (e) => {
 
   try {
     const token = getToken();
-    const res = await fetch('http://localhost:5001/api/artworks', {
+    const res = await fetch(`${API._base}/artworks`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
