@@ -370,7 +370,21 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .dash { padding: 80px 20px 100px; }
-  .dash-stats { grid-template-columns: repeat(2, 1fr); }
+  .dash-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .dash-header { flex-direction: column; gap: 16px; }
+  .dash-greeting { font-size: 1.5rem; }
   .dash-form-row { grid-template-columns: 1fr; }
+  .dash-tabs { gap: 6px; }
+  .dash-tab { padding: 10px 16px; font-size: 0.8rem; }
+  .dash-obras-grid { grid-template-columns: 1fr; }
+  .modal-content { width: 92%; margin: 20px; padding: 24px; }
+}
+
+@media (max-width: 480px) {
+  .dash-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .dash-stat { padding: 16px; }
+  .dash-stat-value { font-size: 1.4rem; }
+  .dash-tabs { flex-wrap: wrap; }
+  .dash-tab { flex: 1; text-align: center; font-size: 0.75rem; padding: 8px 10px; }
+  .modal-content { padding: 20px; }
 }
