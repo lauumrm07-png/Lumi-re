@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarUpload();
   inicializarBusqueda();
   inicializarNotificaciones();
+  inicializarTapMovil();
 });
 
 // =========================
@@ -164,6 +165,33 @@ function inicializarTilt() {
     photo.addEventListener('mouseleave', () => {
       inner.style.transform = '';
     });
+  });
+}
+
+// =========================
+// 2C. TAP MÓVIL — toggle info
+// =========================
+
+function inicializarTapMovil() {
+  const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+  if (!isMobile) return;
+
+  const gallery = document.getElementById('gallery-container');
+  if (!gallery) return;
+
+  gallery.addEventListener('click', (e) => {
+    const photo = e.target.closest('.photo');
+    if (!photo) return;
+    if (photo.classList.contains('info-visible')) return;
+    e.stopImmediatePropagation();
+    document.querySelectorAll('.photo.info-visible').forEach(p => p.classList.remove('info-visible'));
+    photo.classList.add('info-visible');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.photo')) {
+      document.querySelectorAll('.photo.info-visible').forEach(p => p.classList.remove('info-visible'));
+    }
   });
 }
 
@@ -562,6 +590,7 @@ function activarLightbox(data, isLocal) {
   function cerrar() {
     lightbox.classList.remove('active');
     if (lenis) lenis.start();
+    document.querySelectorAll('.photo.info-visible').forEach(p => p.classList.remove('info-visible'));
   }
 
   function anterior() {

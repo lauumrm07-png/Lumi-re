@@ -1786,10 +1786,20 @@ body {
     justify-content: center;
   }
 
+  .photo {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .photo-overlay {
-    opacity: 1;
-    transform: none;
+    opacity: 0;
+    transform: translateY(10px);
     padding: 20px;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .photo.info-visible .photo-overlay {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .photo-overlay .photo-tag {
