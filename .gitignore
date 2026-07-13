@@ -1,7 +1,26 @@
-node_modules/
+# === Cosas que NUNCA deben subir a GitHub ===
+
+# Llaves y contraseñas secretas
 .env
-backend/.env
-backend/data/
-backend/public/uploads/
+**/.env
+!**/.env.example
+
+# Librerías (se reinstalan solas, pesan mucho)
+node_modules/
+**/node_modules/
+
+# Bodega temporal de base de datos
+**/data/
+**/protected/
+
+# Archivos que suben los usuarios (van a Cloudinary, no al código)
+**/public/uploads/*
+!**/public/uploads/.gitkeep
+
+# Respaldo local de duplicados (no hace falta en la nube)
+_respaldo/
+
+# Basura del sistema
 .DS_Store
+**/.DS_Store
 *.log
